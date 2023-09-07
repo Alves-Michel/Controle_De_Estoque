@@ -5,6 +5,9 @@ public class Product {
     public int Amount;
     public int Codigo;
 
+    public Product(){
+
+    }
     public Product(String nameProduct, double price, int amount, int codigo) {
         NameProduct = nameProduct;
         Price = price;
@@ -28,8 +31,11 @@ public class Product {
         return Codigo;
     }
 
-    public double ValorTotalEmEstoque(){
+    public double ValorEmEstoque(){
         return Price * Amount;
+    }
+    public double CalcularTotalEmEstoque(){
+        return   Price * Amount;
     }
 
     public void AdcionarProdutos(int amout){
@@ -44,10 +50,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product: " +
-                "Name: " + NameProduct +
-                ", Price: R$" + Price +
-                ", Amount: " + Amount +
-                ", Valor total do Produto: R$"+ ValorTotalEmEstoque() +"\n";
+        return "Código-" + Codigo +
+                "- Produto: " + NameProduct +
+                ", R$" + Price +
+                ", Quantidade: " + Amount +
+                ", Valor total do produto no estoque: R$"+ ValorEmEstoque();
     }
 }
