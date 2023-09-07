@@ -7,6 +7,7 @@ public class Interaction {
     {
         ArrayList<Product> produtoPrincipal = new ArrayList<Product>();
         Scanner leitor = new Scanner(System.in);
+        Product produto = new Product();
 
         while(true){
             System.out.println("____________________________________");
@@ -31,98 +32,101 @@ public class Interaction {
                 case 1:
                     System.out.println("____________________________________");
                     System.out.println("Nome do Produto: ");
-                    String NameProduct = leitor.next();
+                    String nomeProduto = leitor.next();
                     System.out.println("Preço do produto: " );
-                    double Price = leitor.nextDouble();
+                    double precoProduto = leitor.nextDouble();
                     System.out.println("Quantidade de produtos: ");
-                    int Amount = leitor.nextInt();
+                    int quantidadeProduto = leitor.nextInt();
                     System.out.println("Codigo do produto");
-                    int Codigo = leitor.nextInt();
-                    Product produto = new Product(NameProduct, Price, Amount, Codigo);
-                    produtoPrincipal.add(produto);
+                    int codigoProduto = leitor.nextInt();
+
+                    Product novoProduto = new Product(nomeProduto, precoProduto, quantidadeProduto, codigoProduto);
+                    produtoPrincipal.add(novoProduto);
                     break;
+
 
                 case 2:
                     System.out.println("____________________________________");
                     System.out.println("Digite o codigo do produto a ser consultado:");
                     int codigoConsulta = leitor.nextInt();
-                    Product produtoConsulta = null;
+                   produto = null;
 
                     for (Product c : produtoPrincipal) {
                         if(c.getCodigo() == codigoConsulta){
-                            produtoConsulta = c;
+                            produto = c;
                             break;
                         }
                     }
-                    if(produtoConsulta == null){
+                    if(produto == null){
                         System.out.println("Produto nao encontrado: ");
                         break;
                     }
-                    System.out.println(produtoConsulta.toString());
+                    System.out.println(produto.toString());
 
                     break;
 
                 case 3 :
                     System.out.println("____________________________________");
                     System.out.println("Digite o codigo do produto: ");
-                    int codigoProduto = leitor.nextInt();
-                    Product produtoSelcionado = null;
+                    int codigo = leitor.nextInt();
+                     produto = null;
 
                     for (Product c : produtoPrincipal) {
-                        if(c.getCodigo() == codigoProduto){
-                            produtoSelcionado = c;
+                        if(c.getCodigo() == codigo){
+                            produto = c;
                             break;
                         }
                     }
-                    if(produtoSelcionado == null){
+                    if(produto == null){
                         System.out.println("Produto nao encontrado: ");
                         break;
                     }
 
                     System.out.println("Digite a quantidade que deseja adicionar:");
                     int amountAtualizado = leitor.nextInt();
-                    produtoSelcionado.AdcionarProdutos(amountAtualizado);
+                    produto.AdcionarProdutos(amountAtualizado);
                     break;
 
                 case 4:
                     System.out.println("____________________________________");
+                    double ValorTotalEmEstoque = 0;
+                    for ( Product c : produtoPrincipal) {
+                        produto = c;
+                        ValorTotalEmEstoque += produto.CalcularTotalEmEstoque();
+                    }
+                    System.out.println("Valor total do estoque: R$" + ValorTotalEmEstoque);
                     break;
 
                 case 5:
                     System.out.println("____________________________________");
-                    System.out.println("Produtos em estoque: " + produtoPrincipal.toString());
+                    System.out.println("Lista de Produtos em Estoque:");
+
+                    for (Product p : produtoPrincipal) {
+                        System.out.println(p);
+                    }
                     break;
 
                 case 6 :
                     System.out.println("____________________________________");
+                    System.out.println("Digite o código do produto que deseja remover: ");
+                    int codigoProduto2 = leitor.nextInt();
+                    Product produtoParaRemover = null;
 
+                    for (Product p : produtoPrincipal) {
+                        if (p.getCodigo() == codigoProduto2) {
+                            produtoParaRemover = p;
+                            break;
+                        }
+                    }
 
+                    if (produtoParaRemover != null) {
+                        produtoPrincipal.remove(produtoParaRemover);
+                        System.out.println("Produto removido com sucesso!");
+                    } else {
+                        System.out.println("Produto não encontrado.");
+                    }
                     break;
-
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-
     }
 }
