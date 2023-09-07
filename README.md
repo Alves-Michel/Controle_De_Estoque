@@ -1,7 +1,5 @@
 # Atividade de Estrutura De Dados 2
 
-Projeto em andamento...........
-
 Controle de Estoque de Produtos em uma Loja
 
 Imagine que você é o gerente de uma loja e precisa de um programa para gerenciar o estoque de produtos.
