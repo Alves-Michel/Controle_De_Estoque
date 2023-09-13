@@ -1,6 +1,3 @@
-# Atividade de Estrutura De Dados 2
-
-Controle de Estoque de Produtos em uma Loja
 
 Imagine que você é o gerente de uma loja e precisa de um programa para gerenciar o estoque de produtos.
 Você gostaria de um sistema fácil para conseguir manipular os seus produtos de maneira mais rápida. 
